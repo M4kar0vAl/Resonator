@@ -15,6 +15,7 @@ class Slider {
     constructor(sliderElement) {
         this.initializeSlider(sliderElement)
         this.initializeState()
+        this.getProxyState()
         this.initializeInserectionObserver()
         this.bindEvents()
     }
@@ -31,9 +32,27 @@ class Slider {
             return paginationButtonElement.classList.contains(this.stateClasses.isActive)
         })
 
-        this.state = {
+        this.initialState = {
             activeSlideIndex: currentSlideIndex
         }
+    }
+
+    getProxyState() {
+        const handler = {
+            set: (target, prop, value) => {
+                const isSet = Reflect.set(target, prop, value)
+
+                if (!isSet) {
+                    return isSet
+                }
+
+                this.updateUI()
+
+                return isSet
+            }
+        }
+
+        this.state = new Proxy(this.initialState, handler)
     }
 
     initializeInserectionObserver() {
@@ -52,7 +71,6 @@ class Slider {
                 const { target } = entry
 
                 this.state.activeSlideIndex = this.slideElements.findIndex((slide) => slide === target)
-                this.updateUI()
             }
         })
     }
