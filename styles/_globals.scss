@@ -1,0 +1,43 @@
+@use 'helpers' as *;
+
+html.fullscreen,
+html:has(.header__overlay.is-active) {
+    scrollbar-gutter: auto;
+}
+
+body {
+    @include fluid-text(17, 14);
+
+    font-family: var(--font-family-base);
+    background-color: var(--color-light);
+    font-weight: 400;
+    color: var(--color-dark);
+}
+
+body:has(.header__overlay.is-active) {
+    overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-family-accent);
+    font-weight: 700;
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+    transition-duration: var(--transition-duration);
+}
+
+button {
+    padding: 0;
+}

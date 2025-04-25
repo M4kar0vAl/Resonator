@@ -1,0 +1,30 @@
+@use '../helpers' as *;
+
+.headphones-img {
+    position: relative;
+    width: fluid(392, 275);
+    min-width: rem(180);
+
+    &__button {
+        @include square(fluid(45, 35));
+        @include flex-center;
+
+        position: absolute;
+        top: rem(10);
+        right: rem(10);
+        background-color: var(--color-light);
+        border: 0;
+        border-radius: var(--border-radius);
+
+        @include hover {
+            background-color: var(--color-gray);
+        }
+
+        &::after {
+            content: '';
+            background: url('../icons/headphones-icon.svg') center/contain no-repeat;
+            width: rem(17);
+            height: rem(22);
+        }
+    }
+}

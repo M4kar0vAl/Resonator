@@ -1,0 +1,134 @@
+@use '../helpers' as *;
+
+.top-podcasts {
+    background-color: var(--color-light-alt);
+    padding-block: rem(92);
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: rem(20);
+        margin-bottom: rem(50);
+    }
+
+    &__slider {
+        --slideMinWidth: 41vw;
+
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(46);
+
+        @include laptop {
+            --slideMinWidth: 55vw;
+        }
+
+        @include tablet {
+            --slideMinWidth: 65vw;
+        }
+
+        @include mobile {
+            row-gap: rem(20);
+        }
+
+        @include mobile-s {
+            --slideMinWidth: 80vw;
+        }
+
+        &-list {
+            display: flex;
+            column-gap: fluid(80, 15);
+            padding: rem(15) calc((100vw - var(--slideMinWidth)) / 2);
+            overflow-x: auto;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+        }
+
+        &-slide {
+            min-width: var(--slideMinWidth);
+            display: flex;
+            flex-direction: column;
+            scroll-snap-align: center;
+        }
+
+        &-pagination {
+            display: flex;
+            align-items: center;
+            align-self: center;
+            column-gap: rem(12);
+
+            &-item {
+                display: inline-flex;
+                align-items: center;
+            }
+
+            &-button {
+                @include square(rem(20));
+
+                position: relative;
+                border-radius: 50%;
+                border: 0;
+                border-color: var(--color-dark-gray-alt);
+                background-color: transparent;
+
+                @include hover {
+                    border: rem(1) solid var(--color-dark-gray-alt);
+                }
+
+                &::after {
+                    @include square(rem(6));
+                    @include abs-center;
+
+                    content: "";
+                    border-radius: 50%;
+                    background-color: var(--color-dark);
+                }
+
+                &.is-active {
+                    border: rem(1) solid var(--color-dark-gray-alt);
+                }
+            }
+        }
+    }
+
+    &__card {
+        display: flex;
+        flex-grow: 1;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+
+        @include mobile {
+            flex-direction: column;
+        }
+
+        .headphones-img {
+            width: fluid(392, 180);
+            flex-shrink: 0;
+
+            @include mobile {
+                width: 100%;
+            }
+        }
+
+        &-img {
+            border-radius: var(--border-radius);
+
+            @include mobile {
+                width: 100%;
+            }
+        }
+
+        &-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: fluid(45, 15);
+        }
+
+        &-title {
+            margin-bottom: rem(18);
+        }
+    }
+}

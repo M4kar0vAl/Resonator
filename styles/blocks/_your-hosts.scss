@@ -1,0 +1,83 @@
+@use '../helpers' as *;
+
+.your-hosts {
+    padding: rem(105) 0 rem(140);
+
+    @include tablet {
+        padding-block: rem(50);
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: rem(60);
+
+        @include mobile {
+            margin-bottom: rem(30);
+        }
+    }
+
+    &__view-all-link {
+        align-self: end;
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        column-gap: fluid(70, 20);
+
+        @include tablet {
+            flex-direction: column;
+            align-items: center;
+            row-gap: rem(30);
+        }
+    }
+
+    &__card {
+        width: fluid(386, 310);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+    
+        &-img {
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        &-body {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            padding: rem(25);
+        }
+
+        &-title {
+            margin-bottom: rem(8);
+        }
+
+        &-position {
+            @include fluid-text(14, 12);
+
+            color: var(--color-dark-gray-alt);
+            line-height: 1.6;
+            margin-bottom: rem(25);
+        }
+
+        &-soc1al-links {
+            display: flex;
+            margin-top: auto;
+            column-gap: rem(16);
+        }
+
+        &-soc1al-link {
+            @include square(rem(22));
+            @include flex-center;
+
+            color: var(--color-light);
+            background-color: var(--color-dark-gray-alt);
+            border-radius: 50%;
+
+            @include hover {
+                background-color: var(--color-dark);
+            }
+        }
+    }
+}

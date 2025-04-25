@@ -1,0 +1,39 @@
+@use '../helpers' as *;
+
+.arrow-link {
+    @include fluid-text(15, 12);
+
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-family-accent);
+    font-weight: 700;
+    line-height: 2;
+    text-decoration: none;
+    column-gap: rem(12);
+    white-space: nowrap;
+
+    @include hover {
+        text-decoration: underline;
+        text-underline-offset: rem(4);
+        text-decoration-thickness: rem(2);
+    }
+
+    @include mobile {
+        column-gap: rem(8);
+    }
+
+    &::after {
+        content: '';
+        background: url('../../icons/arrow-right.svg') right center/contain no-repeat;
+        width: rem(19);
+        aspect-ratio: 1.46;
+
+        @include mobile {
+            width: rem(15);
+        }
+    }
+
+    &:visited {
+        color: currentColor;
+    }
+}

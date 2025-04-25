@@ -1,0 +1,25 @@
+@use '../helpers/' as *;
+
+.podcast-info-breadcrumbs {
+    display: flex;
+    align-items: center;
+    font-size: fluid(14, 12);
+    line-height: 2;
+    color: var(--color-dark-gray-alt);
+
+    span:not(:last-child) {
+        position: relative;
+        padding-right: rem(15);
+
+        &::after {
+            @include square(rem(3));
+            
+            content: '';
+            position: absolute;
+            right: rem(6);
+            top: calc(50% - rem(2));
+            border-radius: 50%;
+            background-color: currentColor;
+        }
+    }
+}

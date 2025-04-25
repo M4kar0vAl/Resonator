@@ -1,0 +1,275 @@
+@use '../helpers' as *;
+
+.header {
+    height: fluid(900, 500);
+    background: url(../../images/header/header-image.jpg) no-repeat center/cover;
+
+    @include mobile {
+        background-position: left;
+        max-height: rem(400);
+    }
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-inline: rem(46);
+        column-gap: rem(20);
+    
+        @include tablet {
+            padding-inline: rem(20);
+        }
+
+        @include mobile {
+            padding-block: rem(24);
+        }
+
+        &:has( .header__overlay.is-active) .header__burger-button {
+            position: fixed;
+            right: rem(58);
+            top: rem(45);
+            z-index: 10;
+
+            @include mobile {
+                right: rem(32);
+                top: rem(24);
+            }
+        }
+    }
+
+    &__logo {
+        flex-shrink: 0;
+    }
+
+    &__overlay {
+        translate: 100%;
+        transition-duration: var(--transition-duration);
+    
+        &.is-active {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 1.5rem;
+            padding: rem(80) 1rem 1rem;
+            background-color: var(--color-gray);
+            z-index: 10;
+            translate: 0;
+            overflow-y: auto;
+
+            @include mobile {
+                padding-top: rem(70);
+            }
+
+            .header__nav-list {
+                flex-direction: column;
+                row-gap: 1rem;
+
+                @include mobile-above {
+                    display: none;
+                }
+            }
+
+            .header__nav-link {
+                padding-block: 1rem;
+            }
+
+            .header__nav {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        &:not(.is-active) {
+            display: contents;
+
+            @include mobile {
+                .header__nav-list {
+                    display: none;
+                }
+            }
+        }
+
+        &:not(.is-active) .header__overlay-only-content {
+            display: none;
+        }
+
+        &-only-content {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__nav-list {
+        display: flex;
+        column-gap: rem(34);
+
+        @include tablet {
+            column-gap: rem(16);
+        }
+    }
+
+    &__nav-link {
+        padding-block: rem(46);
+        text-decoration: none;
+        font-family: var(--font-family-accent);
+        font-size: rem(15);
+        font-weight: 700;
+        line-height: rem(21);
+    
+        &.is-current {
+            text-decoration: underline;
+            text-underline-offset: rem(4);
+            pointer-events: none;
+        }
+
+        &:visited {
+            color: currentColor;
+        }
+
+        @include hover {
+            text-decoration: underline;
+            text-underline-offset: rem(4);
+        }
+    }
+
+    &__actions {
+        display: flex;
+        column-gap: rem(38);
+
+        @include tablet {
+            column-gap: rem(18);
+        }
+    }
+
+    &__search-button {
+        display: inline-flex;
+        align-items: center;
+        background-color: transparent;
+        border: 0;
+        column-gap: rem(6);
+        flex-shrink: 0;
+
+        @include hover {
+            span {
+                text-decoration: underline;
+                text-underline-offset: rem(4);
+            }
+        }
+    }
+
+    &__burger-button {
+        @include square(rem(25));
+
+        display: inline-flex;
+        background-color: transparent;
+        border: 0;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+    
+        &-circle {
+            @include square(rem(5));
+
+            --circleColor: var(--color-dark);
+
+            border-radius: 50%;
+            background-color: var(--circleColor);
+            box-shadow:
+                0 rem(-10) 0 0 var(--circleColor),
+                0 rem(10) 0 0 var(--circleColor);
+        }
+
+        @include hover {
+            .header__burger-button-circle {
+                --circleColor: var(--color-dark-gray-alt);
+            }
+        }
+    }
+
+    &__title {
+        font-size: fluid(95, 30);
+        line-height: 1.1;
+    
+        &:not(:last-child) {
+            margin-bottom: rem(14);
+        }
+    }
+
+    &__info {
+        font-size: fluid(19, 16);
+        line-height: 1.4;
+
+        @include mobile {
+            text-align: center;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: rem(50);
+
+            @include tablet {
+                margin-bottom: rem(24);
+            }
+        }
+    }
+
+    &__content {
+        @include mobile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &-links {
+            display: flex;
+            column-gap: rem(24);
+
+            @include mobile {
+                flex-direction: column;
+                row-gap: rem(10);
+            }
+        }
+
+        &-link {
+            display: inline-flex;
+            width: rem(185);
+            height: rem(54);
+            align-items: center;
+            background-color: var(--color-dark);
+            text-decoration: none;
+            color: var(--color-light);
+            border-radius: rem(30);
+            column-gap: rem(15);
+            padding-inline: rem(15);
+
+            @include hover {
+                background-color: var(--color-dark-gray);
+            }
+
+            svg {
+                height: 50%;
+                width: rem(30);
+            }
+
+            &-info {
+                display: flex;
+                flex-direction: column;
+                font-size: rem(14);
+            
+                p:not(:last-child) {
+                    margin-bottom: 0;
+                }
+
+                p:first-child {
+                    font-size: rem(12);
+                }
+
+                p:last-child {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}

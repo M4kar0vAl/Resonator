@@ -1,0 +1,70 @@
+@use '../helpers/' as *;
+
+.essential-episodes {
+    padding: rem(127) 0 rem(210);
+
+    @include tablet {
+        padding-block: rem(60);
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-bottom: rem(60);
+
+        @include mobile {
+            margin-bottom: rem(30);
+        }
+    }
+
+    &__view-all-link {
+        align-self: end;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: rem(70);
+        justify-content: space-between;
+
+        @include laptop {
+            grid-template-columns: repeat(2, auto);
+            justify-content: space-evenly;
+        }
+
+        @include tablet {
+            grid-template-columns: repeat(1, auto);
+            justify-content: center;
+            gap: rem(30);
+        }
+    }
+
+    &__card {
+        display: flex;
+        flex-direction: column;
+        width: fluid(386, 310);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+
+        .headphones-img {
+            @include square(100%);
+        }
+
+        &-img {
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        &-body {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            flex-grow: 1;
+            padding: rem(30) rem(38);
+        }
+
+        &-title {
+            margin-bottom: rem(26);
+        }
+    }
+}

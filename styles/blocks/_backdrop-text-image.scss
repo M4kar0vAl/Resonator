@@ -1,0 +1,35 @@
+@use '../helpers/' as *;
+
+.backdrop-text-image {
+    position: relative;
+    overflow: visible;
+    display: inline-flex;
+    width: fluid(520, 220);
+    margin-left: auto;
+    flex-shrink: 0;
+
+    @include mobile {
+        min-width: 70%;
+        margin-left: 0;
+    }
+
+    &::before {
+        content: attr(data-text);
+        position: absolute;
+        bottom: 0;
+        font-family: var(--font-family-accent);
+        font-weight: 700;
+        font-size: fluid(92, 40);
+        line-height: 0.5;
+        width: 100%;
+        white-space: nowrap;
+        transform: rotate(-90deg);
+        transform-origin: bottom left;
+        color: var(--color-light-alt);
+    }
+
+    &__image {
+        position: relative;
+        height: auto;
+    }
+}

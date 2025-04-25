@@ -1,0 +1,26 @@
+@use '../helpers' as *;
+
+.share-link {
+    font-family: var(--font-family-accent);
+    font-size: rem(14);
+    line-height: 1.3;
+    color: var(--color-dark-gray-alt);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    column-gap: rem(5);
+
+    @include hover {
+        text-decoration: underline;
+        text-decoration-thickness: rem(2);
+        text-underline-offset: rem(4);
+    }
+
+    &::after {
+        @include square(rem(20));
+
+        content: '';
+        background: url('../icons/share-icon.svg') center/contain no-repeat;
+        display: inline-flex;
+    }
+}

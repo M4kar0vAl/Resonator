@@ -1,0 +1,30 @@
+@use 'helpers' as *;
+
+:root {
+    --color-dark: #000000;
+    --color-light: #FFFFFF;
+    --color-light-alt: #F8F8F8;
+    --color-gray: #CCCCCC;
+    --color-gray-alt: #CECECE;
+    --color-dark-gray: #969696;
+    --color-dark-gray-alt: #8E8B8C;
+
+    --border-radius: #{rem(10)};
+    --border: #{rem(2)} solid var(--color-gray-alt);
+
+    --font-family-base: 'Open Sans', sans-serif;
+    --font-family-accent: 'Lato', sans-serif;
+
+    --button-height: #{rem(54)};
+
+    --container-width: #{rem(1300)};
+    --container-padding-x: #{rem(35)};
+
+    --transition-duration: 0.2s;
+
+    --box-shadow: 0 0 #{rem(25)} 0 rgb(0 0 0 / 0.08);
+
+    @include mobile {
+        --container-padding-x: 16px;
+    }
+}

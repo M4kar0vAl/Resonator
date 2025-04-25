@@ -1,0 +1,193 @@
+@use '../helpers' as *;
+
+.footer {
+    color: var(--color-gray);
+    background-color: var(--color-dark);
+    height: rem(660);
+
+    @include tablet {
+        height: auto;
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding-block: rem(130);
+
+        @include tablet {
+            padding-block: rem(60);
+        }
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: rem(30);
+        margin-bottom: rem(114);
+    
+        @include tablet {
+            margin-bottom: rem(50);
+        }
+
+        @include mobile {
+            flex-direction: column;
+            align-items: center;
+            row-gap: rem(30);
+        }
+
+        &-text {
+            @include fluid-text(27, 18);
+
+            width: fluid(996, 450);
+            font-family: var(--font-family-accent);
+            font-weight: bold;
+            line-height: 1.3;
+            color: var(--color-light);
+
+            @include mobile {
+                width: auto;
+            }
+        }
+    }
+
+    &__logo {
+        margin-bottom: rem(10);
+        min-width: rem(147);
+
+        &-text {
+            font-size: rem(13);
+            line-height: 1.6;
+            color: var(--color-dark-gray);
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        row-gap: rem(50);
+    
+        a:not(.footer__soc1als-link) {
+            text-decoration: none;
+            color: var(--color-gray);
+
+            @include hover {
+                text-decoration: underline;
+                text-underline-offset: rem(5);
+                text-decoration-thickness: rem(2);
+            }
+        }
+
+        &-extra {
+            display: flex;
+            justify-content: end;
+            color: var(--color-dark-gray);
+
+            @include mobile {
+                flex-direction: column;
+                align-items: center;
+                row-gap: rem(20);
+            }
+
+            > * {
+                width: rem(332);
+                font-size: rem(13);
+                line-height: 1.6;
+
+                @include tablet {
+                    width: 100%;
+                }
+
+                @include mobile {
+                    width: auto;
+                }
+            }
+        }
+
+        &-col {
+            @include fluid-text(17, 13);
+
+            display: flex;
+            flex-direction: column;
+            row-gap: rem(25);
+            width: rem(332);
+            line-height: 1.6;
+            color: var(--color-dark-gray);
+        
+            @include tablet {
+                width: 100%;
+            }
+
+            @include mobile {
+                row-gap: rem(15);
+            }
+
+            &-title {
+                @include fluid-text(18, 14);
+                
+                line-height: 1.3;
+                color: var(--color-dark-gray);
+            }
+        }
+
+        &-contacts {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-main {
+            display: flex;
+            justify-content: end;
+
+            @include mobile {
+                flex-direction: column;
+                margin-inline: auto;
+                row-gap: rem(30);
+
+                > * {
+                    width: auto;
+                }
+            }
+        }
+    }
+
+    &__address {
+        color: var(--color-gray);
+    }
+
+    &__soc1als {
+        display: flex;
+        align-items: center;
+        column-gap: rem(20);
+
+        &-link {
+            color: var(--color-dark-gray);
+
+            @include hover {
+                color: var(--color-light);
+            }
+        }
+    }
+}
+
+#footer-facebook-link {
+    @include square(rem(21));
+
+    display: flex;
+    position: relative;
+    color: var(--color-dark);
+    background-color: var(--color-dark-gray);
+    border-radius: 50%;
+
+    @include hover {
+        background-color: var(--color-light);
+    }
+
+    svg {
+        position: absolute;
+        bottom: rem(-3);
+    }
+}

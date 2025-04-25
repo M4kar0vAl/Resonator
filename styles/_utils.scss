@@ -1,0 +1,27 @@
+@use 'helpers' as *;
+
+.container {
+    max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+    margin-inline: auto;
+    padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+    @include visually-hidden;
+}
+
+.section-title {
+    @include fluid-text(50, 20);
+    
+    line-height: 1.1;
+}
+
+.card-title {
+    @include fluid-text(27, 18);
+    
+    line-height: 1.3;
+
+    &--underline {
+        border-bottom: rem(2) solid var(--color-dark);
+    }
+}
