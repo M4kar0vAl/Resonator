@@ -47,12 +47,17 @@
         border-radius: var(--border-radius);
         box-shadow: var(--box-shadow);
 
+        @include mobile-s {
+            width: 100%;
+        }
+
         .headphones-img {
             @include square(100%);
         }
 
         &-img {
             border-radius: var(--border-radius) var(--border-radius) 0 0;
+            width: 100%;
         }
 
         &-body {
